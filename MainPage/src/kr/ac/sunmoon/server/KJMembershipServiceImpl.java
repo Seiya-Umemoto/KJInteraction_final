@@ -26,7 +26,7 @@ public class KJMembershipServiceImpl extends RemoteServiceServlet implements KJM
 		// TODO Auto-generated method stub
 		KJMember kjmember = new KJMember();
 		try {
-			String url = "jdbc:mysql://localhost:3306/sdp2?useSSL=false";
+			String url = "jdbc:mysql://localhost:3306/sdp2?allowPublicKeyRetrieval=true&useSSL=false";
 			String user = "root";
 			String password_ = "seiya411";
 			
@@ -118,14 +118,17 @@ public class KJMembershipServiceImpl extends RemoteServiceServlet implements KJM
 			String email = kjMember.getEmail();
 			String[] interests = kjMember.getInterests();
 			
-			String url = "jdbc:mysql://localhost:3306/sdp2?useSSL=false";
+			String url = "jdbc:mysql://localhost:3306/sdp2?allowPublicKeyRetrieval=true&useSSL=false";
 			String user = "root";
 			String password_ = "seiya411";
 			
 			Connection con = DriverManager.getConnection(url, user, password_);
 			
 			Statement stmt = con.createStatement();
-			String sql = "INSERT into kjmember values(\"" +id + "\", \"" + password + "\", \"" + checkpassword + "\", \"" + name + "\", \"" + gender + "\", \"" + birth + "\", \"" + country + "\", \"" + local + "\");";
+			String sql = "INSERT into kjmember values(\"" +id + "\", \"" + password + "\", \"" + checkpassword + 
+					"\", \"" + name + "\", \"" + gender + "\", \"" + birth + "\", \"" + country + "\", \"" + local + 
+					"\", \"" + email + "\", \"" + interests[0] + "\", \"" + interests[1] + "\", \"" + interests[2] + 
+					"\", \"" + interests[3] + "\", \"" + interests[4] + "\");";
 			ResultSet rs1 = stmt.executeQuery(sql);
 			
 			rs1.close();
@@ -144,7 +147,7 @@ public class KJMembershipServiceImpl extends RemoteServiceServlet implements KJM
 		String password = loginmember.getPassword();
 //		List returnlist = new List();
 		try {
-			String url = "jdbc:mysql://localhost:3306/sdp2?useSSL=false";
+			String url = "jdbc:mysql://localhost:3306/sdp2?allowPublicKeyRetrieval=true&useSSL=false";
 			String user = "root";
 			String password_ = "seiya411";
 			
@@ -199,7 +202,7 @@ public class KJMembershipServiceImpl extends RemoteServiceServlet implements KJM
 		KJMember[] kjmembers = new KJMember[2];
 		String matchingID = null;
 		try {
-			String url = "jdbc:mysql://localhost:3306/sdp2?useSSL=false";
+			String url = "jdbc:mysql://localhost:3306/sdp2?allowPublicKeyRetrieval=true&useSSL=false";
 			String user = "root";
 			String password = "seiya411";
 			
